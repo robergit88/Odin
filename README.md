@@ -1,2 +1,2 @@
 # Odin
- El projecto Odin JS
+ El projecto Odin de Javascript
