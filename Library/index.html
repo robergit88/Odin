@@ -3,24 +3,18 @@
 
 <head>
     <meta charset="utf-8">
+    <script src="./js/main.js"></script>
     <title>Odin Project - Biblioteca</title>
 </head>
 
-<body class="sapUiBody" id="content"> </body>
+<header>Biblioteca Odin</header>
 
-<div data-sap-ui-component data-name="DIV - Biblioteca" 
-     data-id="container" 
-     data-settings='{"id" : "Biblioteca"}'>
+<body>
+    <h1>Biblioteca Odin</h1>
+    <p>Bienvenido a la biblioteca de Odin.</p>
 
-    <Panel headerText="Texto del Panel">
-        <content>
-            <Button text="Texto del boton" press=".onShowHello" />
-            <Input value="valor" 
-                   description="description" 
-                   valueLiveUpdate="true" width="60%" />
-        </content>
-    </Panel>
+    <button name="button" onclick="saludar()">Añadir</button>
 
-</div>
+</body>
 
 </html>
