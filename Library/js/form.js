@@ -47,8 +47,6 @@ function readBook(bookId) {
   }
 }
 
-
-
 function Book(author, title, pages) {
   this.id = crypto.randomUUID();
   this.author = author;
