@@ -8,39 +8,52 @@
     </head>
 
     <body>
-        <h1>Biblioteca Odinnnnnnnn</h1>
+        <h1>Biblioteca Odin</h1>
         <div class="container min-vh-100">
             <div class="row">
+
                 <!-- Formulario Barra lateral -->
                 <form action="#" class="col-md-3 h-100 p-4">
+                    
                     <label for="bookTitle">Título</label>
-                    <input type="text" class="form-control mb-3" placeholder="Ingresar título del libro" id="bookTitle"
-                        name="title" required />
+                    <input type="text" 
+                           name="title" 
+                           class="form-control mb-3" 
+                           placeholder="Ingresar título del libro" id="bookTitle"
+                           required />
 
                     <label for="bookAuthor">Autor</label>
-                    <input type="text" class="form-control mb-3" placeholder="Ingresar Autor" id="bookAuthor"
-                        name="author" required />
+                    <input type="text" 
+                           name="author" 
+                           class="form-control mb-3" 
+                           placeholder="Ingresar Autor" 
+                           id="bookAuthor"
+                           required />
 
                     <label for="bookPages">Número de Páginas</label>
-                    <input type="number" class="form-control mb-3" placeholder="Número de páginas"
-                        id="bookPages" name="pages" required />
-                    <!-- <button type="submit" class="btn btn-primary">Add Book</button> -->
-                    <!-- <button name="btn_agregar" onclick="llamarForm()">Agregar</button> -->
-                    <button type="submit" name="btn_agregar" ">Agregar</button>
+                    <input type="number" 
+                           name="pages" 
+                           class="form-control mb-3" 
+                           placeholder="Número de páginas"
+                           id="bookPages" 
+                           required />
+
+                    <button type="submit" 
+                            name="btn_agregar" ">Agregar</button>
                 </form>
 
-                <!-- Sección de exhibición de libros -->
-<div class=" col-md-9 border-start px-4">
-                        <h2 class="fs-2 fw-bold border-bottom pb-2 mb-4 m-0">Galería de libros</h2>
-                        <div class="row book-showCase g-3 d-flex align-stretch">
-                            <!-- Aquí se insertan los libros -->
-                        </div>
+        <!-- Sección de exhibición de libros -->
+        <div class=" col-md-9 border-start px-4">
+            <h2 class="fs-2 fw-bold border-bottom pb-2 mb-4 m-0">Galería de libros</h2>
+            <div class="row book-showCase g-3 d-flex align-stretch">
+                <!-- Aquí se insertan los libros -->
             </div>
+        </div>
         </div>
         </div>
 
         <script src="./js/main.js"></script>
-
-    </body>
+        
+        </body>
 
 </html>
