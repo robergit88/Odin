@@ -17,7 +17,15 @@ function renderBoard() {
 }
 
 function handleCellClick(idx) {
-    if (!gameActive || board[idx]) return;
+    // Evita que se juegue si el juego terminó o si la celda ya está ocupada
+    if (!gameActive) {
+        // Si el juego no está activo, no hacer nada
+        return;
+    }
+    if (board[idx]) {
+        // Si la celda ya tiene una X u O, no hacer nada
+        return;
+    }
     board[idx] = currentPlayer;
     renderBoard();
     const winner = checkWinner();
