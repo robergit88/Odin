@@ -23,6 +23,6 @@ function terminanConS(array) {
     return array.filter((element) => element.endsWith("s"));
 }
 
-// console.log(terminanConS(["pruebas", "arroz", "árbol", "tokens"])) // ["pruebas", "tokens"]
-console.log(terminanConS(["beta", "delta", "gama"])) // []
+console.log(terminanConS(["pruebas", "arroz", "árbol", "tokens"])) // ["pruebas", "tokens"]
+// console.log(terminanConS(["beta", "delta", "gama"])) // []
 // console.log(terminanConS([])) // []
