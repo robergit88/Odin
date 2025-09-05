@@ -1,24 +1,14 @@
-// let text = "This (is) W3School";
-// // let pattern = /[A-Z]/g; //buscar letras del alfabeto en IMPRENTA
+function fixPackages(texto) {
+    console.log(texto);
 
-// let text = "Hellooo World! Hello W3Schools!";
-// let pattern = /lo*/g;
+    return texto.replace(/\(([^)]+)\)/g, (match, contenido) => {
+        // Revertir el contenido que está entre paréntesis
+        return contenido.split('').reverse().join('');
+    });
+}
 
-// let text = "Is this (all) there is?";
-// let pattern = /is/g;
 
-// let text = "This is W3School";
-// let pattern = / is /g;
-// // let pattern = /[^W]/g;
-
-// let text = "That's hot!";
-// let pattern = /h.t/g; //[ 'hat', 'hot' ]
-
-// let text = "This (is) W3School";
-// let pattern = /(.)/g;
-
-let text = "HELLO, LOOK AT YOU";
-let pattern = /\bLO/;
-
-let result = text.match(pattern);
-console.log(result)
+// console.log(fixPackages('a(cb)de'));
+console.log(fixPackages('a(bc(def)g)h'));
+// fixPackages('abc(def(gh)i)jk')
+// fixPackages('a(b(c))e')

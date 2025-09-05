@@ -1,2 +1,2 @@
-
-    // for (let i = 0; i < array.length; i++) {
+    // let po = new Array(ar)
+    // console.log(po.reverse());
