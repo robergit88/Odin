@@ -7,7 +7,7 @@
 //   }
 // };
 
-// There are also 2 ways to get information out of an object: 
+// There are also 2 ways to get information out of an object:
 // dot notation and bracket notation.
 
 // dot notation
@@ -19,7 +19,7 @@
 // console.log(myObject.property)
 // console.log(myObject.otherProperty)
 
-function createUser (name) {
+function createUser(name) {
   const discordName = "@" + name;
 
   let reputation = 0;
@@ -35,6 +35,6 @@ josh.giveReputation();
 
 console.log({
   discordName: josh.discordName,
-  reputation: josh.getReputation()
+  reputation: josh.getReputation(),
 });
 // logs { discordName: "@josh", reputation: 2 }

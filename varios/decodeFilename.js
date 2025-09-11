@@ -1,4 +1,4 @@
-// El Grinch ha hackeado 🏴‍☠️ los sistemas del taller de Santa Claus y ha codificado los nombres de todos los archivos importantes. 
+// El Grinch ha hackeado 🏴‍☠️ los sistemas del taller de Santa Claus y ha codificado los nombres de todos los archivos importantes.
 // Ahora los elfos no pueden encontrar los archivos originales y necesitan tu ayuda para descifrar los nombres.
 
 // Cada archivo sigue este formato:
@@ -9,18 +9,16 @@
 // Finaliza con una extensión extra al final (que no necesitamos).
 // Ten en cuenta que el nombre de los archivos pueden contener letras (a-z, A-Z), números (0-9), otros guiones bajos (_) y guiones (-).
 
-// Tu tarea es implementar una función que reciba un string con el nombre de un archivo codificado y 
+// Tu tarea es implementar una función que reciba un string con el nombre de un archivo codificado y
 // devuelva solo la parte importante: el nombre del archivo y su extensión.
 
 function decodeFilename(filename) {
+  let array = filename.split(".", 2);
 
-    let array = filename.split(".", 2);
+  let name = array[0].slice(array[0].indexOf("_") + 1) + "." + array[1];
 
-    let name = array[0].slice(array[0].indexOf("_") + 1) + "." + array[1];
-    
-    console.log(name);
+  console.log(name);
 }
-
 
 // decodeFilename('2023122512345678_sleighDesign.png.grinchwa')
 // ➞ "sleighDesign.png"
@@ -28,5 +26,5 @@ function decodeFilename(filename) {
 // decodeFilename('42_chimney_dimensions.pdf.hack2023')
 // // ➞ "chimney_dimensions.pdf"
 
-decodeFilename('987654321_elf-roster.csv.tempfile')
+decodeFilename("987654321_elf-roster.csv.tempfile");
 // // ➞ "elf-roster.csv"

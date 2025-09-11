@@ -8,15 +8,15 @@
 //    });
 
 function empiezanConA(array) {
-    //    const nuevoArray = array.filter(elemento => elemento.charAt(0).toLowerCase() === 'a');
-    const nuevoArray = [];
-    for (let i = 0; i < array.length; i++) {
-        const pedo = array[i].toLowerCase();
-        if (pedo.charAt(0) === 'a') {
-            nuevoArray.push(array[i]);
-        }
+  //    const nuevoArray = array.filter(elemento => elemento.charAt(0).toLowerCase() === 'a');
+  const nuevoArray = [];
+  for (let i = 0; i < array.length; i++) {
+    const pedo = array[i].toLowerCase();
+    if (pedo.charAt(0) === "a") {
+      nuevoArray.push(array[i]);
     }
-    return nuevoArray;
+  }
+  return nuevoArray;
 }
 
-console.log(empiezanConA(["beta", "alfa", "Arbol", "gama"]))
+console.log(empiezanConA(["beta", "alfa", "Arbol", "gama"]));
