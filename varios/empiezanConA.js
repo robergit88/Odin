@@ -19,4 +19,4 @@ function empiezanConA(array) {
     return nuevoArray;
 }
 
-// console.log(empiezanConA(["beta", "alfa", "Arbol", "gama"]))
+console.log(empiezanConA(["beta", "alfa", "Arbol", "gama"]))
