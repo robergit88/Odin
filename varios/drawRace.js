@@ -13,7 +13,7 @@ function drawRace(indices, length) {
 
             j = indices[i];
 
-            if (j == 0) {
+            if (j ==  0) {
 
                 cad = '~'.repeat(length);
             }

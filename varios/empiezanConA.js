@@ -15,7 +15,6 @@ function empiezanConA(array) {
         if (pedo.charAt(0) === 'a') {
             nuevoArray.push(array[i]);
         }
-
     }
     return nuevoArray;
 }
