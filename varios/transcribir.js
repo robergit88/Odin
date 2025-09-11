@@ -1,5 +1,6 @@
 // escribe tu función acá
 function transcribir(texto) {
+  console.log(`Antes: ${texto}`);
   const transcripciones = {
     G: "C",
     C: "G",
@@ -33,5 +34,5 @@ function transcribir(texto) {
 // código de prueba
 // console.log("ACGT") // "UGCA"
 // console.log(transcribir("ACGT")) // "UGCA"
-console.log("ACGTGGTCTTAA");
-console.log(transcribir("ACGTGGTCTTAA")); // "UGCACCAGAAUU"
+// console.log("ACGTGGTCTTAA");
+console.log("Después: ", transcribir("ACGTGGTCTTAA"));
