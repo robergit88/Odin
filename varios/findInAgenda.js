@@ -36,15 +36,13 @@ function mapearAgenda(agenda) {
 
   let usuarios = [];
   resto.forEach((element) => {
-    element.trim();
-    let telefono = extraerTelefono(element);
-    let nombre = extraerNombre(element);
-    let direccion = extraerDireccion(element);
+    element = element.trim();
 
     let persona = {};
-    persona.telefono = telefono;
-    persona.nombre = nombre;
-    persona.direccion = direccion;
+    persona.telefono = extraerTelefono(element);
+    persona.nombre = extraerNombre(element);
+    persona.direccion = extraerDireccion(element);
+
     usuarios.push(persona);
   });
 
@@ -53,8 +51,9 @@ function mapearAgenda(agenda) {
 
 function extraerTelefono(datos) {
   let inicio = datos.indexOf("+");
-  let fin = datos.indexOf(" ");
-  return datos.slice(inicio, fin);
+  let temp = datos.slice(inicio);
+  let fin = temp.indexOf(" ");
+  return temp.slice(0, fin);
 }
 
 function extraerNombre(datos) {
