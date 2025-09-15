@@ -1,3 +1,5 @@
+// Reto #3: Organizando el inventario
+//
 // Recibirás un array de objetos, donde cada objeto representa un juguete y tiene las propiedades:
 // name:     el nombre del juguete (string).
 // quantity: la cantidad disponible de ese juguete (entero).
@@ -59,29 +61,6 @@ function organizeInventory(inventory) {
     }
   });
   console.log(toys);
-
-  // return toys;
-
-  // for (let cat of category) {
-  //     toys[cat] = {};
-
-  //     for (let item of inventory) {
-  //         // if (item.category === cat) {
-  //         //     toys[cat][item.name] = toys[cat][item.name] ? toys[cat][item.name] + item.quantity : item.quantity;
-
-  //         // }
-
-  //         // VERSIÓN 1: Paso a paso con if/else
-  //         if (item.category === cat) {
-  //             // Si ya existe el item en esta categoría, sumamos la cantidad
-  //             toys[cat][item.name] = toys[cat][item.name] + item.quantity;
-  //         } else {
-  //             // Si no existe, lo inicializamos con la cantidad actual
-  //             toys[cat][item.name] = item.quantity;
-  //         }
-
-  //     }
-  // }
 }
 
 // organizeInventory([]); // {}
