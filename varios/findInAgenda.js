@@ -24,14 +24,42 @@ const agenda = `+34-600-123-456 Calle Gran Via 12 <Juan Perez>
  Plaza Mayor 45 Madrid 28013 <Maria Gomez> +34-600-987-654
 <Carlos Ruiz> +1-800-555-0199 Fifth Ave New York`;
 
-function findInAgenda(agenda, phone) {
-  let users = mapearAgenda(agenda);
+findInAgenda(agenda, "34-600-123-456");
+// { name: "Juan Perez", address: "Calle Gran Via 12" }
 
-  console.log(users);
-  // return null;
+// findInAgenda(agenda, "600-987");
+// // { name: "Maria Gomez", address: "Plaza Mayor 45 Madrid 28013" }
+
+// findInAgenda(agenda, "111");
+// // null
+// // Explicación: No hay resultados
+
+// findInAgenda(agenda, "1");
+// // null
+// // Explicación: Demasiados resultados
+
+function findInAgenda(agenda, phone) {
+  let user = mapear(agenda);
+
+  let resultado = user.filter(function (element) {
+    return element.telefono.indexOf(phone) > -1;
+  });
+
+  if (resultado.length == 0) {
+    return null;
+  }
+
+  if (resultado.length > 1) {
+    return null;
+  }
+
+  console.log(
+    `Nombre: ${resultado[0].nombre}\n`,
+    `Dirección: ${resultado[0].direccion}\n`
+  );
 }
 
-function mapearAgenda(agenda) {
+function mapear(agenda) {
   let resto = agenda.split("\n");
 
   let usuarios = [];
@@ -51,9 +79,14 @@ function mapearAgenda(agenda) {
 
 function extraerTelefono(datos) {
   let inicio = datos.indexOf("+");
-  let temp = datos.slice(inicio);
+  let temp = datos.slice(inicio + 1);
   let fin = temp.indexOf(" ");
-  return temp.slice(0, fin);
+
+  if (fin == -1) {
+    return temp;
+  } else {
+    return temp.slice(0, fin);
+  }
 }
 
 function extraerNombre(datos) {
@@ -63,26 +96,29 @@ function extraerNombre(datos) {
 }
 
 function extraerDireccion(datos) {
-  let inicio = datos.match(/[a-zA-Z]/).index;
+  let dir = "";
+  let temp = datos.split(" ");
 
-  let temp = datos.slice(inicio);
+  for (const element of temp) {
+    let a = element.indexOf("+");
+    if (a >= 0) {
+      continue;
+    }
+    let b = element.indexOf("<");
 
-  let fin = temp.match(/[+,<]/).index;
+    if (b >= 0) {
+      continue;
+    }
 
-  let dir = temp.slice(0, fin - 1);
+    let c = element.indexOf(">");
+
+    if (c >= 0) {
+      continue;
+    }
+    a = b = c = -1;
+    dir = dir + " " + element;
+  }
+
+  dir = dir.trim();
   return dir;
 }
-
-findInAgenda(agenda, "34-600-123-456");
-// { name: "Juan Perez", address: "Calle Gran Via 12" }
-
-// findInAgenda(agenda, '600-987')
-// // { name: "Maria Gomez", address: "Plaza Mayor 45 Madrid 28013" }
-
-// findInAgenda(agenda, '111')
-// // null
-// // Explicación: No hay resultados
-
-// findInAgenda(agenda, '1')
-// // null
-// // Explicación: Demasiados resultados

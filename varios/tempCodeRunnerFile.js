@@ -1,2 +1,2 @@
 
-}
+  let users = mapearAgenda(agenda);
