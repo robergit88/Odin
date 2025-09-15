@@ -1,3 +1,7 @@
+// Reto #8: La carrera de renos
+//
+// Tu tarea es mostrar el progreso de cada reno en una pista de nieve en formato isométrico.
+
 function drawRace(indices, length) {
   // Code here
   if (length == 0) {
@@ -35,6 +39,6 @@ function drawRace(indices, length) {
   }
 }
 
-// drawRace([0, 5, -3], 10)
-drawRace([2, -1, 0, 5], 8);
+drawRace([0, 5, -3], 10);
+// drawRace([2, -1, 0, 5], 8);
 // drawRace([3, 7, -2], 12)

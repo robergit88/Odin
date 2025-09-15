@@ -1,3 +1,5 @@
+// Reto #16: ❄️ Limpiando la nieve del camino
+//
 // eliminar todos los montículos de nieve adyacentes que sean iguales
 // hasta que no queden más movimientos posibles.
 function removeSnow(s) {
@@ -24,11 +26,11 @@ function removeSnow(s) {
   }
 }
 
-// removeSnow("zxxzoz"); // -> "oz"
+removeSnow("zxxzoz"); // -> "oz"
 // // 1. Eliminamos "xx", quedando "zzoz"
 // // 2. Eliminamos "zz", quedando "oz"
 
-removeSnow("abcdd"); // -> "abc"
+// removeSnow("abcdd"); // -> "abc"
 // // 1. Eliminamos "dd", quedando "abc"
 
 // removeSnow("zzz"); // -> "z"

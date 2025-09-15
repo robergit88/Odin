@@ -1,3 +1,5 @@
+// Reto #6: ¿Regalo dentro de la caja?
+//
 // La caja tiene un regalo (*) y cuenta como dentro de la caja si:
 // Está rodeada por # en los bordes de la caja.
 // El * no está en los bordes de la caja.

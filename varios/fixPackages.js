@@ -1,3 +1,11 @@
+// Reto #7: El ataque del grinch
+//
+// Recibirás un string que contiene letras y paréntesis.
+// Cada vez que encuentres un par de paréntesis, debes voltear el contenido dentro de ellos.
+// Si hay paréntesis anidados, resuelve primero los más internos.
+// Devuelve el string resultante con los paréntesis eliminados,
+// pero con el contenido volteado correctamente.
+
 function fixPackages(packages) {
   // Caso base: si no hay paréntesis, retornamos el string
   let fin = packages.indexOf(")");
@@ -30,27 +38,6 @@ function fixPackages(packages) {
 
   // Llamada recursiva con el resultado modificado
   return fixPackages(resultado);
-
-  // // VERSION REDUCIDA
-
-  // const closeIndex = packages.indexOf(')');
-
-  // // Caso base: no hay más paréntesis
-  // if (closeIndex === -1) return packages;
-
-  // // Encontrar paréntesis de apertura correspondiente
-  // let openIndex = closeIndex - 1;
-  // while (openIndex >= 0 && packages[openIndex] !== '(') {
-  //     openIndex--;
-  // }
-
-  // // Extraer contenido, invertirlo y reemplazar
-  // const content = packages.substring(openIndex + 1, closeIndex);
-  // const reversed = content.split('').reverse().join('');
-  // const result = packages.substring(0, openIndex) + reversed + packages.substring(closeIndex + 1);
-
-  // // Llamada recursiva
-  // return fixPackages(result);
 }
 
 // fixPackages('a(cb)de')
