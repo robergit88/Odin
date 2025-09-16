@@ -70,7 +70,8 @@ function distributeWeight(weight) {
   let lista = [];
   let cajas = combinar(weight, lista);
   cajas.sort((a, b) => a - b);
-  pintar(cajas);
+  // pintar(cajas);
+  pintarMejorada(cajas);
 }
 
 function combinar(peso, cajasUsadas = []) {
@@ -105,27 +106,36 @@ function combinar(peso, cajasUsadas = []) {
   return null;
 }
 
-function pintar(cajas) {
-  //
-  for (let i = 0; i < cajas.length; i++) {
-    const element = cajas[i];
-    let algo = boxRepresentations[element];
+function pintarMejorada(cajas) {
+  const todasLasLineas = [];
 
-    for (let j = 0; j < algo.length; j++) {
-      const el = algo[j];
-      console.log(el);
+  for (let i = 0; i < cajas.length; i++) {
+    const caja = cajas[i];
+    const lineasDeLaCaja = boxRepresentations[caja];
+
+    if (!lineasDeLaCaja) continue;
+
+    if (i === 0) {
+      // Primera caja: todas las líneas
+      todasLasLineas.push(...lineasDeLaCaja);
+    } else {
+      // Cajas siguientes: todas las líneas excepto la primera (techo)
+      // porque el techo ya está como base de la caja anterior
+      todasLasLineas.push(...lineasDeLaCaja.slice(1));
     }
   }
+
+  console.log(todasLasLineas.join("\n"));
 }
 
 // distributeWeight(1);
 // distributeWeight(2);
-// distributeWeight(3);
+distributeWeight(3);
 // distributeWeight(4);
 // distributeWeight(5);
 // distributeWeight(6);
 // distributeWeight(7);
-distributeWeight(8);
+// distributeWeight(8);
 // distributeWeight(9);
 // distributeWeight(10);
 // distributeWeight(11);
