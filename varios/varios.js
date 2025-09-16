@@ -1,27 +1,37 @@
-// const agenda = `+34-600-123-456 Calle Gran Via 12 <Juan Perez>
-//  Plaza Mayor 45 Madrid 28013 <Maria Gomez> +34-600-987-654
-// <Carlos Ruiz> +1-800-555-0199 Fifth Ave New York`;
+// const divmod = (x, y) => [Math.floor(x / y), x % y];
+// // divmod(8, 3); // [2, 2]
+// // divmod(3, 8); // [0, 3]
+// // divmod(5, 5); // [1, 0]
 
-// let resto = agenda.split("\n");
-// console.log(resto);
+// // console.log(divmod(8, 3));
+// // console.log(divmod(3, 8));
+// // console.log(divmod(5, 5));
+// console.log(divmod(15, 5));
 
-// resto.forEach((element) => {
-//   element.trim();
-//   let telefono = extraerTelefono(element);
-//   let direccion = extraerDireccion(element);
-//   let nombre = extraerNombre(element);
-// });
+// function caja(peso, lista) {
+//   lista = cajaArray.map((n) => ({ caja: n, diff: peso - n }));
+//   lista = lista.filter((elem) => elem.diff >= 0);
+//   if (lista.some((el) => el.diff === 0)) {
+//     return lista;
+//   } else {
+//     let pedo = Math.min(...lista.map((obj) => obj.diff));
+//     caja(pedo, lista);
+//   }
+// }
 
-var fruits = ["apple", "banana", "grapes", "mango", "orange"];
+// ✅ MÉTODO BUENO: Un solo string, un solo console.log
+function drawBoxesSingleConsole(width = 13) {
+  const lines = [
+    "//  " + "_".repeat(width),
+    "// |" + " ".repeat(width) + "|",
+    "// |" + "_".repeat(width) + "|", // Línea compartida (techo/piso pegados)
+    "// |" + " ".repeat(width) + "|",
+    "// |" + "_".repeat(width) + "|",
+  ];
 
-/**
- * Filtra la matríz en función de un criterio de búsqueda (query)
- */
-function filterItems(query) {
-  return fruits.filter(function (el) {
-    return el.toLowerCase().indexOf(query.toLowerCase()) > -1;
-  });
+  const completePattern = lines.join("\n");
+  console.log(completePattern);
+  return completePattern; // Bonus: también devuelve el string
 }
 
-// console.log(filterItems("ap")); // ['apple', 'grapes']
-console.log(filterItems("an")); // ['banana', 'mango', 'orange']
+drawBoxesSingleConsole(2);
