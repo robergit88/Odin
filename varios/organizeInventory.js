@@ -64,5 +64,5 @@ function organizeInventory(inventory) {
 }
 
 // organizeInventory([]); // {}
-organizeInventory(inventory);
-// organizeInventory(inventory2)
+// organizeInventory(inventory);
+organizeInventory(inventory2);
