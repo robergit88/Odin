@@ -5,8 +5,8 @@
 // Necesita tu ayuda para resolver el problema.
 //
 // Recibirás dos arrays:
-// received: Lista con los regalos que Santa tiene actualmente.
-// expected: Lista con los regalos que Santa debería tener.
+// received: regalos que TIENE.
+// expected: regalos que DEBERÍA tener.
 // Tu tarea es escribir una función que, dado received y expected, devuelva un objeto con dos propiedades:
 // missing: Un objeto donde las claves son los nombres de los regalos faltantes y
 // los valores son las cantidades que faltan.
@@ -21,14 +21,17 @@
 
 function fixGiftList(received, expected) {
   // Escribe tu código aquí
-  return {
+  let obj = {
     missing: {},
     extra: {},
   };
+
+  return obj;
 }
 
 console.log(fixGiftList([], []));
-// fixGiftList(['puzzle', 'car', 'doll', 'car'], ['car', 'puzzle', 'doll', 'ball'])
+// fixGiftList( ['puzzle', 'car', 'doll', 'car'],
+//              ['car', 'puzzle', 'doll', 'ball'] )
 // // Devuelve:
 // // {
 // //   missing: { ball: 1 },
