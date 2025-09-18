@@ -29,10 +29,8 @@ function fixGiftList(received, expected) {
     extra: {},
   };
 
-  //Se calcula MISSING
   set_missing(ExpectedList, ReceivedList, objReturn.missing);
 
-  //Se calcula EXTRA
   set_extra(ReceivedList, ExpectedList, objReturn.extra);
 
   console.log(JSON.stringify(objReturn, null, 2));
@@ -116,7 +114,7 @@ function contar(element, arreglo) {
   return total;
 }
 
-function set_missing(ExpectedList, ReceivedList, missing) {
+function set_missing(ExpectedList, ReceivedList, objMissing) {
   let falta = [];
   ExpectedList.forEach((el) => {
     //Se obtiene la primera propiedad del objeto
@@ -139,12 +137,12 @@ function set_missing(ExpectedList, ReceivedList, missing) {
     }
   });
 
-  falta.forEach((objeto) => {
-    Object.assign(missing, objeto);
+  falta.forEach((item) => {
+    Object.assign(objMissing, item);
   });
 }
 
-function set_extra(ReceivedList, ExpectedList, extraObj) {
+function set_extra(ReceivedList, ExpectedList, objExtra) {
   let extra = [];
   ReceivedList.forEach((elem) => {
     const propertyName = Object.keys(elem)[0];
@@ -164,7 +162,7 @@ function set_extra(ReceivedList, ExpectedList, extraObj) {
     }
   });
 
-  extra.forEach((objeto) => {
-    Object.assign(extraObj, objeto);
+  extra.forEach((item) => {
+    Object.assign(objExtra, item);
   });
 }
