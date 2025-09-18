@@ -113,7 +113,11 @@ function contar(element, arreglo) {
 
   return total;
 }
-
+/*
+ * -------------------------------------------------------------------------
+ * function set_missing
+ * -------------------------------------------------------------------------
+ */
 function set_missing(ExpectedList, ReceivedList, objMissing) {
   let falta = [];
   ExpectedList.forEach((el) => {
@@ -142,6 +146,11 @@ function set_missing(ExpectedList, ReceivedList, objMissing) {
   });
 }
 
+/*
+ * -------------------------------------------------------------------------
+ * function set_extra
+ * -------------------------------------------------------------------------
+ */
 function set_extra(ReceivedList, ExpectedList, objExtra) {
   let extra = [];
   ReceivedList.forEach((elem) => {
