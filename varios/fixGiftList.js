@@ -18,96 +18,145 @@
 // Si no hay regalos que falten o sobren, las propiedades correspondientes (missing o extra) deben ser objetos vacíos.
 
 function fixGiftList(received, expected) {
+  let countExpected = [];
+  countExpected = contabilizar(expected);
+
+  let countReceived = [];
+  countReceived = contabilizar(received);
+
+  //Se calcula MISSING
+  let falta = [];
+  countExpected.forEach((el) => {
+    //Se obtiene la primera propiedad del objeto
+    const propertyName = Object.keys(el)[0];
+
+    let pos = countReceived.findIndex((item) =>
+      Object.keys(item).includes(propertyName)
+    );
+
+    if (pos == -1) {
+      falta.push(el);
+    } else {
+      let diff = el[propertyName] - countReceived[pos][propertyName];
+
+      if (diff > 0) {
+        let obj = {};
+        obj[propertyName] = diff;
+        falta.push(obj);
+      }
+    }
+  });
+
   let objReturn = {
     missing: {},
     extra: {},
   };
 
-  // MISSING: mirar lista EXPECTED, clasificar y contar luego comparar contra RECEIVED
-  // Identificar juguetes únicos de EXPECTED
-  let setExpected = new Set();
-  expected.forEach((item) => {
-    setExpected.add(item);
+  falta.forEach((objeto) => {
+    Object.assign(objReturn.missing, objeto);
   });
 
-  let countExpected = [];
-  let obj = {};
-  setExpected.forEach((element) => {
-    obj[element] = contar(element, expected);
-    countExpected.push(obj);
-    obj = {};
-  });
+  //Se calcula EXTRA
+  let extra = [];
+  countReceived.forEach((elem) => {
+    const propertyName = Object.keys(elem)[0];
 
-  let countReceived = [];
-  let setReceived = new Set();
-  received.forEach((item) => {
-    setReceived.add(item);
-  });
+    let pos = countExpected.findIndex((item) =>
+      Object.keys(item).includes(propertyName)
+    );
 
-  setReceived.forEach((element) => {
-    obj[element] = contar(element, received);
-    countReceived.push(obj);
-    obj = {};
-  });
-
-  //SE calcula MISSING
-  countExpected.forEach((el) => {
-    let pos = countReceived.findIndex((item) => item == el);
-
-    if (pos == -1) {
-      objReturn.missing = el;
-      // objReturn.missing.push(el);
-      // objReturn.missing.add(el);
+    if (pos != -1) {
+      let diff = elem[propertyName] - countExpected[pos][propertyName];
+      if (diff > 0) {
+        let obj = {};
+        obj[propertyName] = diff;
+        extra.push(obj);
+        obj = {};
+      }
     }
   });
 
-  console.log(objReturn);
+  extra.forEach((objeto) => {
+    Object.assign(objReturn.extra, objeto);
+  });
+
+  console.log(JSON.stringify(objReturn, null, 2));
 }
 
+/*
+ * -------------------------------------------------------------------------
+ */
+fixGiftList(
+  ["puzzle", "car", "doll", "car"], //RECEIVED - TENGO
+  ["car", "puzzle", "doll", "ball"] //EXPECTED - DEBERIA
+);
+// Devuelve:
+// {
+//   missing: { ball: 1 },
+//   extra: { car: 1 }
+// }
+
+// fixGiftList(
+//   ["book", "train", "kite", "train"],
+//   ["train", "book", "kite", "ball", "kite"]
+// );
+// Devuelve:
+// {
+//   missing: { ball: 1, kite: 1 },
+//   extra: { train: 1 }
+// }
+
+// fixGiftList(
+//   ["bear", "bear", "car"],
+//   ["bear", "car", "puzzle", "bear", "car", "car"]
+// );
+// Devuelve:
+// {
+//   missing: { puzzle: 1, car: 2 },
+//   extra: {}
+// }
+
+// fixGiftList(["bear", "bear", "car"], ["car", "bear", "bear"]);
+// Devuelve:
+// {
+//   missing: {},
+//   extra: {}
+// }
+
+/*
+ * -------------------------------------------------------------------------
+ * function contabilizar
+ * -------------------------------------------------------------------------
+ */
+function contabilizar(listaRegalos) {
+  let unSet = new Set();
+  listaRegalos.forEach((item) => {
+    unSet.add(item);
+  });
+
+  let contados = [];
+  let obj = {};
+  unSet.forEach((el) => {
+    obj[el] = contar(el, listaRegalos);
+    contados.push(obj);
+    obj = {};
+  });
+
+  return contados;
+}
+
+/*
+ * -------------------------------------------------------------------------
+ * function contar
+ * -------------------------------------------------------------------------
+ */
 function contar(element, arreglo) {
   let total = 0;
   for (let index = 0; index < arreglo.length; index++) {
-    const valPos = arreglo[index];
-    if (element == valPos) {
+    if (element == arreglo[index]) {
       total += 1;
     }
   }
 
   return total;
 }
-fixGiftList(
-  ["puzzle", "car", "doll", "car"], //RECEIVED - TENGO
-  ["car", "puzzle", "doll", "ball"] //EXPECTED - DEBERIA
-);
-// // Devuelve:
-// // {
-// //   missing: { ball: 1 },
-// //   extra: { car: 1 }
-// // }
-
-// fixGiftList(
-//   ['book', 'train', 'kite', 'train'],
-//   ['train', 'book', 'kite', 'ball', 'kite']
-// )
-// // Devuelve:
-// // {
-// //   missing: { ball: 1, kite: 1 },
-// //   extra: { train: 1 }
-// // }
-
-// fixGiftList(
-//   ['bear', 'bear', 'car'],
-//   ['bear', 'car', 'puzzle', 'bear', 'car', 'car']
-// )
-// // Devuelve:
-// // {
-// //   missing: { puzzle: 1, car: 2 },
-// //   extra: {}
-// // }
-
-// fixGiftList(['bear', 'bear', 'car'], ['car', 'bear', 'bear'])
-// // Devuelve:
-// // {
-// //   missing: {},
-// //   extra: {}
-// // }
