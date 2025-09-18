@@ -86,20 +86,20 @@ function fixGiftList(received, expected) {
 /*
  * -------------------------------------------------------------------------
  */
-fixGiftList(
-  ["puzzle", "car", "doll", "car"], //RECEIVED - TENGO
-  ["car", "puzzle", "doll", "ball"] //EXPECTED - DEBERIA
-);
+// fixGiftList(
+//   ["puzzle", "car", "doll", "car"], //RECEIVED - TENGO
+//   ["car", "puzzle", "doll", "ball"] //EXPECTED - DEBERIA
+// );
 // Devuelve:
 // {
 //   missing: { ball: 1 },
 //   extra: { car: 1 }
 // }
 
-// fixGiftList(
-//   ["book", "train", "kite", "train"],
-//   ["train", "book", "kite", "ball", "kite"]
-// );
+fixGiftList(
+  ["book", "train", "kite", "train"],
+  ["train", "book", "kite", "ball", "kite"]
+);
 // Devuelve:
 // {
 //   missing: { ball: 1, kite: 1 },
