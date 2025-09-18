@@ -18,67 +18,22 @@
 // Si no hay regalos que falten o sobren, las propiedades correspondientes (missing o extra) deben ser objetos vacíos.
 
 function fixGiftList(received, expected) {
-  let countExpected = [];
-  countExpected = contabilizar(expected);
+  let ExpectedList = [];
+  ExpectedList = contabilizar(expected);
 
-  let countReceived = [];
-  countReceived = contabilizar(received);
-
-  //Se calcula MISSING
-  let falta = [];
-  countExpected.forEach((el) => {
-    //Se obtiene la primera propiedad del objeto
-    const propertyName = Object.keys(el)[0];
-
-    let pos = countReceived.findIndex((item) =>
-      Object.keys(item).includes(propertyName)
-    );
-
-    if (pos == -1) {
-      falta.push(el);
-    } else {
-      let diff = el[propertyName] - countReceived[pos][propertyName];
-
-      if (diff > 0) {
-        let obj = {};
-        obj[propertyName] = diff;
-        falta.push(obj);
-      }
-    }
-  });
+  let ReceivedList = [];
+  ReceivedList = contabilizar(received);
 
   let objReturn = {
     missing: {},
     extra: {},
   };
 
-  falta.forEach((objeto) => {
-    Object.assign(objReturn.missing, objeto);
-  });
+  //Se calcula MISSING
+  set_missing(ExpectedList, ReceivedList, objReturn.missing);
 
   //Se calcula EXTRA
-  let extra = [];
-  countReceived.forEach((elem) => {
-    const propertyName = Object.keys(elem)[0];
-
-    let pos = countExpected.findIndex((item) =>
-      Object.keys(item).includes(propertyName)
-    );
-
-    if (pos != -1) {
-      let diff = elem[propertyName] - countExpected[pos][propertyName];
-      if (diff > 0) {
-        let obj = {};
-        obj[propertyName] = diff;
-        extra.push(obj);
-        obj = {};
-      }
-    }
-  });
-
-  extra.forEach((objeto) => {
-    Object.assign(objReturn.extra, objeto);
-  });
+  set_extra(ReceivedList, ExpectedList, objReturn.extra);
 
   console.log(JSON.stringify(objReturn, null, 2));
 }
@@ -159,4 +114,57 @@ function contar(element, arreglo) {
   }
 
   return total;
+}
+
+function set_missing(ExpectedList, ReceivedList, missing) {
+  let falta = [];
+  ExpectedList.forEach((el) => {
+    //Se obtiene la primera propiedad del objeto
+    const propertyName = Object.keys(el)[0];
+
+    let pos = ReceivedList.findIndex((item) =>
+      Object.keys(item).includes(propertyName)
+    );
+
+    if (pos == -1) {
+      falta.push(el);
+    } else {
+      let diff = el[propertyName] - ReceivedList[pos][propertyName];
+
+      if (diff > 0) {
+        let obj = {};
+        obj[propertyName] = diff;
+        falta.push(obj);
+      }
+    }
+  });
+
+  falta.forEach((objeto) => {
+    Object.assign(missing, objeto);
+  });
+}
+
+function set_extra(ReceivedList, ExpectedList, extraObj) {
+  let extra = [];
+  ReceivedList.forEach((elem) => {
+    const propertyName = Object.keys(elem)[0];
+
+    let pos = ExpectedList.findIndex((item) =>
+      Object.keys(item).includes(propertyName)
+    );
+
+    if (pos != -1) {
+      let diff = elem[propertyName] - ExpectedList[pos][propertyName];
+      if (diff > 0) {
+        let obj = {};
+        obj[propertyName] = diff;
+        extra.push(obj);
+        obj = {};
+      }
+    }
+  });
+
+  extra.forEach((objeto) => {
+    Object.assign(extraObj, objeto);
+  });
 }
