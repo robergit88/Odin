@@ -22,6 +22,8 @@ function getCompleted(timeWorked, totalTime) {
     minW = 0,
     segW = 0;
   let arrayWorked = timeWorked.split(":");
+
+  //desestructuración
   [horaW, minW, segW] = arrayWorked;
   horaW = parseInt(horaW);
   minW = parseInt(minW);
@@ -46,7 +48,7 @@ function getCompleted(timeWorked, totalTime) {
   //   Math.ro
   console.log(`${total}%`);
 }
-// getCompleted("01:00:00", "03:00:00"); // 33%
+getCompleted("01:00:00", "03:00:00"); // 33%
 // getCompleted("02:00:00", "04:00:00"); // 50%
 // getCompleted("01:00:00", "01:00:00"); // 100%
 // getCompleted("00:10:00", "01:00:00"); // 17%
