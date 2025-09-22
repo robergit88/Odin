@@ -24,21 +24,17 @@ function generateGiftSets(gifts) {
     unoxuno(gifts, temp);
   }
 
-  let total = [];
-  total = temp;
-  for (let i = 0; i < largo; i++) {
-    combinar(temp.shift(), total);
-  }
+  combinar(temp);
 
-  console.log(JSON.stringify(total, null, 1));
+  console.log(JSON.stringify(temp, null, 1));
 }
 
-function combinar(main, total) {
-  temp = [];
-  temp.push(main);
-  temp.push(total);
+function combinar(total) {
+  let temp = total;
 
-  total.push(temp);
+  while (temp.length > 0) {
+    let mm = temp.shift();
+  }
 }
 
 function unoxuno(gifts, total) {
